@@ -1,0 +1,41 @@
+{
+    "name": "nepada/email-address-doctrine",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "description": "Email address type for Doctrine.",
+    "keywords": ["email address", "value object", "doctrine", "nette"],
+    "support": {
+        "email": "petr@pada.cz",
+        "issues": "https://github.com/nepada/email-address-doctrine/issues"
+    },
+    "authors": [
+        {
+            "name": "Petr Morávek",
+            "email": "petr@pada.cz"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "doctrine/dbal": "^2.6@dev",
+        "nepada/email-address": "^1.0@dev"
+    },
+    "require-dev": {
+        "nette/tester": "^2.0",
+        "mockery/mockery": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nepada\\EmailAddressDoctrine\\": "src/EmailAddressDoctrine/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
