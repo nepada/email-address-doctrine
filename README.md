@@ -41,11 +41,11 @@ doctrine:
 Usage
 -----
 
-There are two Doctrine types in this package - `EmailAddressType` and `EmailAddressLowercaseType`. Both types map database value to [email address value object](https://github.com/nepada/email-address) and back. Both types normalize the domain part of the email address before storing it in database, but they differ in handling of the local part of the address.
+There are two Doctrine types in this package - `EmailAddressType` and `EmailAddressLowercaseType`. Both types map database value to email address value object (see [nepada/email-address](https://github.com/nepada/email-address) for further details) and back. Both types normalize the domain part of the email address before storing it in database, but they differ in handling of the local part of the address.
 
 `EmailAddressType` leaves the local part as is, e.g. `new EmailAddress('ExAmPlE@ExAmPlE.com')` will be stored as string `ExAmPlE@example.com`.
 
-`EmailAddressLowercaseType` converts local part of the address to lowercase before storing it, , e.g. `new EmailAddress('ExAmPlE@ExAmPlE.com')` will be stored as string `example@example.com`. This is not RFC 5321 compliant, however in practice all major mail providers treat local part in case insensitive manner.
+`EmailAddressLowercaseType` converts local part of the address to lowercase before storing it, e.g. `new EmailAddress('ExAmPlE@ExAmPlE.com')` will be stored as string `example@example.com`. This is not RFC 5321 compliant, however in practice all major mail providers treat local part in case insensitive manner.
 
 Example usage in the entity:
 ``` php
@@ -71,4 +71,15 @@ class Contact
     }
 
 }
+```
+
+Example usage in query builder:
+```php
+$result = $repository->createQueryBuilder('foo')
+    ->select('foo')
+    ->where('foo.email = :emailAddress')
+     // the parameter value is automatically normalized to example@example.com
+    ->setParameter('emailAddress', 'Example@Example.com', EmailAddressLowercaseType::NAME)
+    ->getQuery()
+    ->getResult()
 ```
