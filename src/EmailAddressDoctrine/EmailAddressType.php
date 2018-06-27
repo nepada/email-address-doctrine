@@ -6,6 +6,7 @@ namespace Nepada\EmailAddressDoctrine;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 use Nepada\EmailAddress\EmailAddress;
+use Nepada\EmailAddress\InvalidEmailAddressException;
 
 class EmailAddressType extends StringType
 {
@@ -21,6 +22,7 @@ class EmailAddressType extends StringType
      * @param mixed $value
      * @param AbstractPlatform $platform
      * @return EmailAddress|null
+     * @throws InvalidEmailAddressException
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?EmailAddress
     {
@@ -39,6 +41,7 @@ class EmailAddressType extends StringType
      * @param mixed $value
      * @param AbstractPlatform $platform
      * @return string|null
+     * @throws InvalidEmailAddressException
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
     {
