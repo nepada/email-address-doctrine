@@ -8,7 +8,6 @@ parameters:
     exceptionRules:
         checkedExceptions:
             - RuntimeException
-            - Nepada\EmailAddress\InvalidEmailAddressException
         ignoredExceptions:
             - LogicException
             - Nette\InvalidStateException

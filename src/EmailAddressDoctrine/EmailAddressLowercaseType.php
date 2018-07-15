@@ -5,7 +5,6 @@ namespace Nepada\EmailAddressDoctrine;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Nepada\EmailAddress\EmailAddress;
-use Nepada\EmailAddress\InvalidEmailAddressException;
 
 class EmailAddressLowercaseType extends EmailAddressType
 {
@@ -16,7 +15,6 @@ class EmailAddressLowercaseType extends EmailAddressType
      * @param mixed $value
      * @param AbstractPlatform $platform
      * @return string|null
-     * @throws InvalidEmailAddressException
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
     {
