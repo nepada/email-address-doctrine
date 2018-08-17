@@ -33,7 +33,10 @@ class EmailAddressLowercaseTypeTest extends TestCase
 
         Type::addType(EmailAddressLowercaseType::NAME, EmailAddressLowercaseType::class);
 
-        $this->type = Type::getType(EmailAddressLowercaseType::NAME);
+        /** @var EmailAddressLowercaseType $type */
+        $type = Type::getType(EmailAddressLowercaseType::NAME);
+        Assert::type(EmailAddressLowercaseType::class, $type);
+        $this->type = $type;
 
         $this->platform = \Mockery::mock(AbstractPlatform::class);
     }

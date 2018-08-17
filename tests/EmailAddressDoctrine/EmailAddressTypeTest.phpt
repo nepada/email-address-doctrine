@@ -33,7 +33,10 @@ class EmailAddressTypeTest extends TestCase
 
         Type::addType(EmailAddressType::NAME, EmailAddressType::class);
 
-        $this->type = Type::getType(EmailAddressType::NAME);
+        /** @var EmailAddressType $type */
+        $type = Type::getType(EmailAddressType::NAME);
+        Assert::type(EmailAddressType::class, $type);
+        $this->type = $type;
 
         $this->platform = \Mockery::mock(AbstractPlatform::class);
     }
