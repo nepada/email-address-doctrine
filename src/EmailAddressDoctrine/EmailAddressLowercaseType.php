@@ -23,7 +23,7 @@ class EmailAddressLowercaseType extends EmailAddressType
         }
 
         if (!$value instanceof EmailAddress) {
-            $value = new EmailAddress($value);
+            $value = EmailAddress::fromString($value);
         }
 
         return $value->getLowercaseValue();

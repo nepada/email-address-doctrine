@@ -32,7 +32,7 @@ class EmailAddressType extends StringType
             return $value;
         }
 
-        return new EmailAddress($value);
+        return EmailAddress::fromString($value);
     }
 
     /**
@@ -47,7 +47,7 @@ class EmailAddressType extends StringType
         }
 
         if (!$value instanceof EmailAddress) {
-            $value = new EmailAddress($value);
+            $value = EmailAddress::fromString($value);
         }
 
         return $value->getValue();

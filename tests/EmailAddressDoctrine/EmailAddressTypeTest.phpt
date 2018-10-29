@@ -89,7 +89,7 @@ class EmailAddressTypeTest extends TestCase
                 'expected' => null,
             ],
             [
-                'value' => new EmailAddress('Example@HÁČKYČÁRKY.cz'),
+                'value' => EmailAddress::fromString('Example@HÁČKYČÁRKY.cz'),
                 'expected' => 'Example@xn--hkyrky-ptac70bc.cz',
             ],
             [
@@ -137,12 +137,12 @@ class EmailAddressTypeTest extends TestCase
                 'expected' => null,
             ],
             [
-                'value' => new EmailAddress('Example@HÁČKYČÁRKY.cz'),
-                'expected' => new EmailAddress('Example@HÁČKYČÁRKY.cz'),
+                'value' => EmailAddress::fromString('Example@HÁČKYČÁRKY.cz'),
+                'expected' => EmailAddress::fromString('Example@HÁČKYČÁRKY.cz'),
             ],
             [
                 'value' => 'Example@HÁČKYČÁRKY.cz',
-                'expected' => new EmailAddress('Example@HÁČKYČÁRKY.cz'),
+                'expected' => EmailAddress::fromString('Example@HÁČKYČÁRKY.cz'),
             ],
         ];
     }
