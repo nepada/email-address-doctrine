@@ -4,10 +4,10 @@ declare(strict_types = 1);
 namespace NepadaTests\EmailAddressDoctrine;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 use Mockery\MockInterface;
 use Nepada\EmailAddress\EmailAddress;
-use Nepada\EmailAddress\InvalidEmailAddressException;
 use Nepada\EmailAddressDoctrine\EmailAddressType;
 use NepadaTests\TestCase;
 use Tester\Assert;
@@ -64,7 +64,8 @@ class EmailAddressTypeTest extends TestCase
             function (): void {
                 $this->type->convertToDatabaseValue('foo', $this->platform);
             },
-            InvalidEmailAddressException::class
+            ConversionException::class,
+            'Could not convert PHP value \'foo\' of type \'string\' to type \'email_address\'. Expected one of the following types: null, Nepada\EmailAddress\EmailAddress, email address string'
         );
     }
 
@@ -105,7 +106,8 @@ class EmailAddressTypeTest extends TestCase
             function (): void {
                 $this->type->convertToPHPValue('foo', $this->platform);
             },
-            InvalidEmailAddressException::class
+            ConversionException::class,
+            'Could not convert database value "foo" to Doctrine Type email_address'
         );
     }
 

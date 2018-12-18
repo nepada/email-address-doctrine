@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace Nepada\EmailAddressDoctrine;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\StringType;
 use Nepada\EmailAddress\EmailAddress;
 
@@ -32,7 +33,11 @@ class EmailAddressType extends StringType
             return $value;
         }
 
-        return EmailAddress::fromString($value);
+        try {
+            return EmailAddress::fromString($value);
+        } catch (\Throwable $exception) {
+            throw ConversionException::conversionFailed($value, $this->getName());
+        }
     }
 
     /**
@@ -47,7 +52,11 @@ class EmailAddressType extends StringType
         }
 
         if (!$value instanceof EmailAddress) {
-            $value = EmailAddress::fromString($value);
+            try {
+                $value = EmailAddress::fromString($value);
+            } catch (\Throwable $exception) {
+                throw ConversionException::conversionFailedInvalidType($value, $this->getName(), ['null', EmailAddress::class, 'email address string']);
+            }
         }
 
         return $value->getValue();

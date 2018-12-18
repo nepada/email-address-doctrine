@@ -4,6 +4,7 @@ declare(strict_types = 1);
 namespace Nepada\EmailAddressDoctrine;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\ConversionException;
 use Nepada\EmailAddress\EmailAddress;
 
 class EmailAddressLowercaseType extends EmailAddressType
@@ -23,7 +24,11 @@ class EmailAddressLowercaseType extends EmailAddressType
         }
 
         if (!$value instanceof EmailAddress) {
-            $value = EmailAddress::fromString($value);
+            try {
+                $value = EmailAddress::fromString($value);
+            } catch (\Throwable $exception) {
+                throw ConversionException::conversionFailedInvalidType($value, $this->getName(), ['null', EmailAddress::class, 'email address string']);
+            }
         }
 
         return $value->getLowercaseValue();
