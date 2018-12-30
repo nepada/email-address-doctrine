@@ -127,7 +127,6 @@ class EmailAddressLowercaseTypeTest extends TestCase
         }
     }
 
-
     /**
      * @return mixed[]
      */
