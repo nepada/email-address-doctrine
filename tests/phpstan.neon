@@ -6,8 +6,15 @@ includes:
 
 parameters:
     exceptionRules:
-        checkedExceptions:
-            - RuntimeException
-        ignoredExceptions:
+        uncheckedExceptions:
             - LogicException
+            - Doctrine\DBAL\Types\ConversionException
             - Nette\InvalidStateException
+
+    ignoreErrors:
+        -
+            message: '#Throwable is never thrown in the corresponding try block#'
+            path: %currentWorkingDirectory%/src/EmailAddressDoctrine/EmailAddressType.php
+        -
+            message: '#Throwable is never thrown in the corresponding try block#'
+            path: %currentWorkingDirectory%/src/EmailAddressDoctrine/EmailAddressLowercaseType.php
