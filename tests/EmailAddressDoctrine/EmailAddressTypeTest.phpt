@@ -31,7 +31,12 @@ class EmailAddressTypeTest extends TestCase
     {
         parent::setUp();
 
-        Type::addType(EmailAddressType::NAME, EmailAddressType::class);
+        if (Type::hasType(EmailAddressType::NAME)) {
+            Type::overrideType(EmailAddressType::NAME, EmailAddressType::class);
+
+        } else {
+            Type::addType(EmailAddressType::NAME, EmailAddressType::class);
+        }
 
         /** @var EmailAddressType $type */
         $type = Type::getType(EmailAddressType::NAME);
@@ -39,13 +44,6 @@ class EmailAddressTypeTest extends TestCase
         $this->type = $type;
 
         $this->platform = \Mockery::mock(AbstractPlatform::class);
-    }
-
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-
-        Type::overrideType(EmailAddressType::NAME, null);
     }
 
     public function testGetName(): void

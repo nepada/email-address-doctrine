@@ -31,7 +31,12 @@ class EmailAddressLowercaseTypeTest extends TestCase
     {
         parent::setUp();
 
-        Type::addType(EmailAddressLowercaseType::NAME, EmailAddressLowercaseType::class);
+        if (Type::hasType(EmailAddressLowercaseType::NAME)) {
+            Type::overrideType(EmailAddressLowercaseType::NAME, EmailAddressLowercaseType::class);
+
+        } else {
+            Type::addType(EmailAddressLowercaseType::NAME, EmailAddressLowercaseType::class);
+        }
 
         /** @var EmailAddressLowercaseType $type */
         $type = Type::getType(EmailAddressLowercaseType::NAME);
@@ -39,13 +44,6 @@ class EmailAddressLowercaseTypeTest extends TestCase
         $this->type = $type;
 
         $this->platform = \Mockery::mock(AbstractPlatform::class);
-    }
-
-    protected function tearDown(): void
-    {
-        parent::tearDown();
-
-        Type::overrideType(EmailAddressLowercaseType::NAME, null);
     }
 
     public function testGetName(): void
