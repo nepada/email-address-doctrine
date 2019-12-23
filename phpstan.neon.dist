@@ -1,13 +1,13 @@
 includes:
-    - phar://phpstan.phar/vendor/pepakriz/phpstan-exception-rules/extension.neon
-    - phar://phpstan.phar/vendor/phpstan/phpstan-nette/extension.neon
-    - phar://phpstan.phar/vendor/phpstan/phpstan-nette/rules.neon
-    - phar://phpstan.phar/vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/pepakriz/phpstan-exception-rules/extension.neon
+    - vendor/phpstan/phpstan-nette/extension.neon
+    - vendor/phpstan/phpstan-nette/rules.neon
 
 parameters:
     level: max
     paths:
-        - %currentWorkingDirectory%/src
+        - src
 
     exceptionRules:
         uncheckedExceptions:
@@ -18,7 +18,7 @@ parameters:
     ignoreErrors:
         -
             message: '#Throwable is never thrown in the corresponding try block#'
-            path: %currentWorkingDirectory%/src/EmailAddressDoctrine/EmailAddressType.php
+            path: src/EmailAddressDoctrine/EmailAddressType.php
         -
             message: '#Throwable is never thrown in the corresponding try block#'
-            path: %currentWorkingDirectory%/src/EmailAddressDoctrine/EmailAddressLowercaseType.php
+            path: src/EmailAddressDoctrine/EmailAddressLowercaseType.php
