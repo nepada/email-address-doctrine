@@ -21,11 +21,10 @@ require_once __DIR__ . '/../bootstrap.php';
 class EmailAddressLowercaseTypeTest extends TestCase
 {
 
-    /** @var EmailAddressLowercaseType */
-    private $type;
+    private EmailAddressLowercaseType $type;
 
     /** @var AbstractPlatform|MockInterface */
-    private $platform;
+    private AbstractPlatform $platform;
 
     protected function setUp(): void
     {

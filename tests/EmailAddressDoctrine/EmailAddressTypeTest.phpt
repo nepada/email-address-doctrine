@@ -21,11 +21,10 @@ require_once __DIR__ . '/../bootstrap.php';
 class EmailAddressTypeTest extends TestCase
 {
 
-    /** @var EmailAddressType */
-    private $type;
+    private EmailAddressType $type;
 
     /** @var AbstractPlatform|MockInterface */
-    private $platform;
+    private AbstractPlatform $platform;
 
     protected function setUp(): void
     {
