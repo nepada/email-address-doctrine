@@ -19,7 +19,7 @@ class EmailAddressType extends StringType
     }
 
     /**
-     * @param mixed $value
+     * @param EmailAddress|string|null $value
      * @param AbstractPlatform $platform
      * @return EmailAddress|null
      */
@@ -41,7 +41,7 @@ class EmailAddressType extends StringType
     }
 
     /**
-     * @param mixed $value
+     * @param EmailAddress|string|null $value
      * @param AbstractPlatform $platform
      * @return string|null
      */

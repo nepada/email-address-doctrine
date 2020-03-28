@@ -18,6 +18,12 @@ parameters:
 
     ignoreErrors:
         -
+            message: '#Parameter \#1 \$value .* of method Nepada\\EmailAddressDoctrine\\EmailAddressType::convertToPHPValue\(\) should be contravariant with parameter \$value .* of method Doctrine\\DBAL\\Types\\Type::convertToPHPValue\(\)#'
+            path: src/EmailAddressDoctrine/EmailAddressType.php
+        -
+            message: '#Parameter \#1 \$value .* of method Nepada\\EmailAddressDoctrine\\EmailAddressType::convertToDatabaseValue\(\) should be contravariant with parameter \$value .* of method Doctrine\\DBAL\\Types\\Type::convertToDatabaseValue\(\)#'
+            path: src/EmailAddressDoctrine/EmailAddressType.php
+        -
             message: '#Throwable is never thrown in the corresponding try block#'
             path: src/EmailAddressDoctrine/EmailAddressType.php
         -

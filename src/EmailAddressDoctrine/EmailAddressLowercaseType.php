@@ -13,7 +13,7 @@ class EmailAddressLowercaseType extends EmailAddressType
     public const NAME = 'email_address_lowercase';
 
     /**
-     * @param mixed $value
+     * @param EmailAddress|string|null $value
      * @param AbstractPlatform $platform
      * @return string|null
      */
