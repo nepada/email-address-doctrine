@@ -36,7 +36,7 @@ dbal:
             email_address: Nepada\EmailAddressDoctrine\EmailAddressType
             email_address_lowercase: Nepada\EmailAddressDoctrine\EmailAddressLowercaseType
 
-```  
+```
 
 
 Usage
@@ -55,16 +55,12 @@ use Nepada\EmailAddress\EmailAddress;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="contacts")
  */
 class Contact
 {
 
-    /**
-     * @ORM\Column(type="email_address_lowercase", nullable=false)
-     * @var EmailAddress
-     */
-    private $email;
+    /** @ORM\Column(type="email_address_lowercase", nullable=false) */
+    private EmailAdress $email;
 
     public function getEmailAddress(): EmailAddress
     {
