@@ -33,8 +33,12 @@ In Nette with [nettrine/dbal](https://github.com/nettrine/dbal) integration, you
 dbal:
     connection:
         types:
-            email_address: Nepada\EmailAddressDoctrine\EmailAddressType
-            email_address_lowercase: Nepada\EmailAddressDoctrine\EmailAddressLowercaseType
+            email_address:
+                class: Nepada\EmailAddressDoctrine\EmailAddressType
+                commented: false
+            email_address_lowercase:
+                class: Nepada\EmailAddressDoctrine\EmailAddressLowercaseType
+                commented: false
 
 ```
 
