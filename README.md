@@ -17,7 +17,7 @@ $ composer require nepada/email-address-doctrine
 ```
 
 Register the types in your bootstrap:
-``` php
+```php
 \Doctrine\DBAL\Types\Type::addType(
     \Nepada\EmailAddressDoctrine\EmailAddressType::NAME,
     \Nepada\EmailAddressDoctrine\EmailAddressType::class
@@ -48,7 +48,7 @@ There are two Doctrine types in this package - `EmailAddressType` and `EmailAddr
 `EmailAddressLowercaseType` converts local part of the address to lowercase before storing it, e.g. `new EmailAddress('ExAmPlE@ExAmPlE.com')` will be stored as string `example@example.com`. This is not RFC 5321 compliant, however in practice all major mail providers treat local part in case insensitive manner.
 
 Example usage in the entity:
-``` php
+```php
 use Doctrine\ORM\Mapping as ORM;
 use Nepada\EmailAddress\EmailAddress;
 
