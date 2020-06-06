@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace Nepada\EmailAddressDoctrine;
 
 /**
- * @deprecated
+ * @deprecated use CaseInsensitiveEmailAddressType instead
  */
 class EmailAddressLowercaseType extends CaseInsensitiveEmailAddressType
 {
