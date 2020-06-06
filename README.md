@@ -19,12 +19,12 @@ $ composer require nepada/email-address-doctrine
 Register the types in your bootstrap:
 ```php
 \Doctrine\DBAL\Types\Type::addType(
-    \Nepada\EmailAddressDoctrine\EmailAddressType::NAME,
-    \Nepada\EmailAddressDoctrine\EmailAddressType::class
+    \Nepada\EmailAddress\RfcEmailAddress::class,
+    \Nepada\EmailAddressDoctrine\RfcEmailAddressType::class
 );
 \Doctrine\DBAL\Types\Type::addType(
-    \Nepada\EmailAddressDoctrine\EmailAddressLowercaseType::NAME,
-    \Nepada\EmailAddressDoctrine\EmailAddressLowercaseType::class
+    \Nepada\EmailAddress\CaseInsensitiveEmailAddress::class,
+    \Nepada\EmailAddressDoctrine\CaseInsensitiveEmailAddressType::class
 );
 ```
 
@@ -33,24 +33,24 @@ In Nette with [nettrine/dbal](https://github.com/nettrine/dbal) integration, you
 dbal:
     connection:
         types:
-            email_address: Nepada\EmailAddressDoctrine\EmailAddressType
-            email_address_lowercase: Nepada\EmailAddressDoctrine\EmailAddressLowercaseType
+            Nepada\EmailAddress\RfcEmailAddress: Nepada\EmailAddressDoctrine\RfcEmailAddressType
+            Nepada\EmailAddress\CaseInsensitiveEmailAddress: Nepada\EmailAddressDoctrine\CaseInsensitiveEmailAddressType
 ```
 
 
 Usage
 -----
 
-There are two Doctrine types in this package - `EmailAddressType` and `EmailAddressLowercaseType`. Both types map database value to email address value object (see [nepada/email-address](https://github.com/nepada/email-address) for further details) and back. Both types normalize the domain part of the email address before storing it in database, but they differ in handling of the local part of the address.
+This package provides two Doctrine types:
+1) `RfcEmailAddressType` for storing emails represented by `RfcEmailAddress`.
+2) `CaseInsensitiveEmailAddressType` for storing emails represented by `CaseInsensitiveEmailAddress`.
 
-`EmailAddressType` leaves the local part as is, e.g. `new EmailAddress('ExAmPlE@ExAmPlE.com')` will be stored as string `ExAmPlE@example.com`.
-
-`EmailAddressLowercaseType` converts local part of the address to lowercase before storing it, e.g. `new EmailAddress('ExAmPlE@ExAmPlE.com')` will be stored as string `example@example.com`. This is not RFC 5321 compliant, however in practice all major mail providers treat local part in case insensitive manner.
+ Both types normalize the domain part of the email address before storing it in database, but they differ in handling of the local part of the address. See [nepada/email-address](https://github.com/nepada/email-address) for further details.
 
 Example usage in the entity:
 ```php
 use Doctrine\ORM\Mapping as ORM;
-use Nepada\EmailAddress\EmailAddress;
+use Nepada\EmailAddress\CaseInsensitiveEmailAddress;
 
 /**
  * @ORM\Entity
@@ -58,10 +58,10 @@ use Nepada\EmailAddress\EmailAddress;
 class Contact
 {
 
-    /** @ORM\Column(type="email_address_lowercase", nullable=false) */
-    private EmailAdress $email;
+    /** @ORM\Column(type=CaseInsensitiveEmailAddress::class, nullable=false) */
+    private CaseInsensitiveEmailAddress $email;
 
-    public function getEmailAddress(): EmailAddress
+    public function getEmailAddress(): CaseInsensitiveEmailAddress
     {
         return $this->emailAddress;
     }
@@ -75,7 +75,7 @@ $result = $repository->createQueryBuilder('foo')
     ->select('foo')
     ->where('foo.email = :emailAddress')
      // the parameter value is automatically normalized to example@example.com
-    ->setParameter('emailAddress', 'Example@Example.com', EmailAddressLowercaseType::NAME)
+    ->setParameter('emailAddress', 'Example@Example.com', CaseInsensitiveEmailAddress::class)
     ->getQuery()
-    ->getResult()
+    ->getResult();
 ```

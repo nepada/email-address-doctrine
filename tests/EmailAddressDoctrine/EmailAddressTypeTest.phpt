@@ -8,6 +8,7 @@ use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 use Mockery\MockInterface;
 use Nepada\EmailAddress\EmailAddress;
+use Nepada\EmailAddress\RfcEmailAddress;
 use Nepada\EmailAddressDoctrine\EmailAddressType;
 use NepadaTests\TestCase;
 use Tester\Assert;
@@ -87,7 +88,7 @@ class EmailAddressTypeTest extends TestCase
                 'expected' => null,
             ],
             [
-                'value' => EmailAddress::fromString('Example@HÁČKYČÁRKY.cz'),
+                'value' => RfcEmailAddress::fromString('Example@HÁČKYČÁRKY.cz'),
                 'expected' => 'Example@xn--hkyrky-ptac70bc.cz',
             ],
             [
@@ -119,7 +120,7 @@ class EmailAddressTypeTest extends TestCase
         if ($expected === null) {
             Assert::null($actual);
         } else {
-            Assert::type(EmailAddress::class, $actual);
+            Assert::type(RfcEmailAddress::class, $actual);
             Assert::same((string) $expected, (string) $actual);
         }
     }
@@ -135,12 +136,12 @@ class EmailAddressTypeTest extends TestCase
                 'expected' => null,
             ],
             [
-                'value' => EmailAddress::fromString('Example@HÁČKYČÁRKY.cz'),
-                'expected' => EmailAddress::fromString('Example@HÁČKYČÁRKY.cz'),
+                'value' => RfcEmailAddress::fromString('Example@HÁČKYČÁRKY.cz'),
+                'expected' => RfcEmailAddress::fromString('Example@HÁČKYČÁRKY.cz'),
             ],
             [
                 'value' => 'Example@HÁČKYČÁRKY.cz',
-                'expected' => EmailAddress::fromString('Example@HÁČKYČÁRKY.cz'),
+                'expected' => RfcEmailAddress::fromString('Example@HÁČKYČÁRKY.cz'),
             ],
         ];
     }
