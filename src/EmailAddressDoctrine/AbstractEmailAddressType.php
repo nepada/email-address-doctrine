@@ -7,6 +7,7 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\StringType;
 use Nepada\EmailAddress\EmailAddress;
+use Nepada\EmailAddress\InvalidEmailAddressException;
 
 /**
  * @phpstan-template TEmailAddress of EmailAddress
@@ -66,6 +67,7 @@ abstract class AbstractEmailAddressType extends StringType
      * @phpstan-return TEmailAddress
      * @param EmailAddress|string $value
      * @return EmailAddress
+     * @throws InvalidEmailAddressException
      */
     protected function convertToEmailAddress($value): EmailAddress
     {
