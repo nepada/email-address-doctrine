@@ -18,10 +18,14 @@ use Tester\Assert;
 abstract class EmailAddressTypeTestCase extends TestCase
 {
 
-    /** @phpstan-var AbstractEmailAddressType<TEmailAddress> */
+    /**
+     * @phpstan-var AbstractEmailAddressType<TEmailAddress>
+     */
     protected AbstractEmailAddressType $type;
 
-    /** @var AbstractPlatform|MockInterface */
+    /**
+     * @var AbstractPlatform|MockInterface
+     */
     protected AbstractPlatform $platform;
 
     /**

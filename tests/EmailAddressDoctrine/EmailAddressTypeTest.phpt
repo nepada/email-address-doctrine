@@ -24,7 +24,9 @@ class EmailAddressTypeTest extends TestCase
 
     private EmailAddressType $type;
 
-    /** @var AbstractPlatform|MockInterface */
+    /**
+     * @var AbstractPlatform|MockInterface
+     */
     private AbstractPlatform $platform;
 
     protected function setUp(): void

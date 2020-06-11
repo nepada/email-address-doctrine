@@ -25,7 +25,9 @@ class EmailAddressLowercaseTypeTest extends TestCase
 
     private EmailAddressLowercaseType $type;
 
-    /** @var AbstractPlatform|MockInterface */
+    /**
+     * @var AbstractPlatform|MockInterface
+     */
     private AbstractPlatform $platform;
 
     protected function setUp(): void
