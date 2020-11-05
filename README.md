@@ -1,7 +1,7 @@
 Email address Doctrine type
 ===========================
 
-[![Build Status](https://travis-ci.org/nepada/email-address-doctrine.svg?branch=master)](https://travis-ci.org/nepada/email-address-doctrine)
+[![Build Status](https://github.com/nepada/email-address-doctrine/workflows/CI/badge.svg)](https://github.com/nepada/email-address-doctrine/actions?query=workflow%3ACI+branch%3Amaster)
 [![Coverage Status](https://coveralls.io/repos/github/nepada/email-address-doctrine/badge.svg?branch=master)](https://coveralls.io/github/nepada/email-address-doctrine?branch=master)
 [![Downloads this Month](https://img.shields.io/packagist/dm/nepada/email-address-doctrine.svg)](https://packagist.org/packages/nepada/email-address-doctrine)
 [![Latest stable](https://img.shields.io/packagist/v/nepada/email-address-doctrine.svg)](https://packagist.org/packages/nepada/email-address-doctrine)
