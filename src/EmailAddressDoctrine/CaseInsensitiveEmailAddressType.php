@@ -6,14 +6,13 @@ namespace Nepada\EmailAddressDoctrine;
 use Nepada\EmailAddress\CaseInsensitiveEmailAddress;
 
 /**
- * @phpstan-extends AbstractEmailAddressType<CaseInsensitiveEmailAddress>
+ * @extends AbstractEmailAddressType<CaseInsensitiveEmailAddress>
  */
 class CaseInsensitiveEmailAddressType extends AbstractEmailAddressType
 {
 
     /**
-     * @phpstan-return class-string<CaseInsensitiveEmailAddress>
-     * @return string
+     * @return class-string<CaseInsensitiveEmailAddress>
      */
     protected function getEmailAddressClassName(): string
     {

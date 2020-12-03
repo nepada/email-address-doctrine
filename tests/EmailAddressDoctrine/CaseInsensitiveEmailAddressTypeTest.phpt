@@ -12,13 +12,13 @@ require_once __DIR__ . '/../bootstrap.php';
 
 /**
  * @testCase
- * @phpstan-extends EmailAddressTypeTestCase<CaseInsensitiveEmailAddress>
+ * @extends EmailAddressTypeTestCase<CaseInsensitiveEmailAddress>
  */
 class CaseInsensitiveEmailAddressTypeTest extends EmailAddressTypeTestCase
 {
 
     /**
-     * @phpstan-return class-string<CaseInsensitiveEmailAddressType>
+     * @return class-string<CaseInsensitiveEmailAddressType>
      */
     protected function getEmailAddressTypeClassName(): string
     {
@@ -26,7 +26,7 @@ class CaseInsensitiveEmailAddressTypeTest extends EmailAddressTypeTestCase
     }
 
     /**
-     * @phpstan-return class-string<CaseInsensitiveEmailAddress>
+     * @return class-string<CaseInsensitiveEmailAddress>
      */
     protected function getEmailAddressClassName(): string
     {

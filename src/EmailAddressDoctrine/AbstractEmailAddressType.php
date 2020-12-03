@@ -10,14 +10,13 @@ use Nepada\EmailAddress\EmailAddress;
 use Nepada\EmailAddress\InvalidEmailAddressException;
 
 /**
- * @phpstan-template TEmailAddress of EmailAddress
+ * @template TEmailAddress of EmailAddress
  */
 abstract class AbstractEmailAddressType extends StringType
 {
 
     /**
-     * @phpstan-return class-string<TEmailAddress>
-     * @return string
+     * @return class-string<TEmailAddress>
      */
     abstract protected function getEmailAddressClassName(): string;
 
@@ -27,10 +26,9 @@ abstract class AbstractEmailAddressType extends StringType
     }
 
     /**
-     * @phpstan-return TEmailAddress|null
      * @param EmailAddress|string|null $value
      * @param AbstractPlatform $platform
-     * @return EmailAddress|null
+     * @return TEmailAddress|null
      */
     public function convertToPHPValue($value, AbstractPlatform $platform): ?EmailAddress
     {
@@ -64,9 +62,8 @@ abstract class AbstractEmailAddressType extends StringType
     }
 
     /**
-     * @phpstan-return TEmailAddress
      * @param EmailAddress|string $value
-     * @return EmailAddress
+     * @return TEmailAddress
      * @throws InvalidEmailAddressException
      */
     protected function convertToEmailAddress($value): EmailAddress
@@ -80,7 +77,7 @@ abstract class AbstractEmailAddressType extends StringType
             $value = $value->toString();
         }
 
-        /** @phpstan-var TEmailAddress $emailAddress */
+        /** @var TEmailAddress $emailAddress */
         $emailAddress = $emailAddressClassName::fromString($value);
 
         return $emailAddress;

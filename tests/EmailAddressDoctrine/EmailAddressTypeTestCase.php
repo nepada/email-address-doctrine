@@ -13,13 +13,13 @@ use NepadaTests\TestCase;
 use Tester\Assert;
 
 /**
- * @phpstan-template TEmailAddress of EmailAddress
+ * @template TEmailAddress of EmailAddress
  */
 abstract class EmailAddressTypeTestCase extends TestCase
 {
 
     /**
-     * @phpstan-var AbstractEmailAddressType<TEmailAddress>
+     * @var AbstractEmailAddressType<TEmailAddress>
      */
     protected AbstractEmailAddressType $type;
 
@@ -29,12 +29,12 @@ abstract class EmailAddressTypeTestCase extends TestCase
     protected AbstractPlatform $platform;
 
     /**
-     * @phpstan-return class-string<AbstractEmailAddressType<TEmailAddress>>
+     * @return class-string<AbstractEmailAddressType<TEmailAddress>>
      */
     abstract protected function getEmailAddressTypeClassName(): string;
 
     /**
-     * @phpstan-return class-string<TEmailAddress>
+     * @return class-string<TEmailAddress>
      */
     abstract protected function getEmailAddressClassName(): string;
 
@@ -58,7 +58,7 @@ abstract class EmailAddressTypeTestCase extends TestCase
             Type::addType($this->getEmailAddressClassName(), $this->getEmailAddressTypeClassName());
         }
 
-        /** @phpstan-var AbstractEmailAddressType<TEmailAddress> $type */
+        /** @var AbstractEmailAddressType<TEmailAddress> $type */
         $type = Type::getType($this->getEmailAddressClassName());
         Assert::type($this->getEmailAddressTypeClassName(), $type);
         $this->type = $type;

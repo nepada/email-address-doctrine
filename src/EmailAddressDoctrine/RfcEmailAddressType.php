@@ -6,14 +6,13 @@ namespace Nepada\EmailAddressDoctrine;
 use Nepada\EmailAddress\RfcEmailAddress;
 
 /**
- * @phpstan-extends AbstractEmailAddressType<RfcEmailAddress>
+ * @extends AbstractEmailAddressType<RfcEmailAddress>
  */
 class RfcEmailAddressType extends AbstractEmailAddressType
 {
 
     /**
-     * @phpstan-return class-string<RfcEmailAddress>
-     * @return string
+     * @return class-string<RfcEmailAddress>
      */
     protected function getEmailAddressClassName(): string
     {

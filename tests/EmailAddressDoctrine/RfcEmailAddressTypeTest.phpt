@@ -12,13 +12,13 @@ require_once __DIR__ . '/../bootstrap.php';
 
 /**
  * @testCase
- * @phpstan-extends EmailAddressTypeTestCase<RfcEmailAddress>
+ * @extends EmailAddressTypeTestCase<RfcEmailAddress>
  */
 class RfcEmailAddressTypeTest extends EmailAddressTypeTestCase
 {
 
     /**
-     * @phpstan-return class-string<RfcEmailAddressType>
+     * @return class-string<RfcEmailAddressType>
      */
     protected function getEmailAddressTypeClassName(): string
     {
@@ -26,7 +26,7 @@ class RfcEmailAddressTypeTest extends EmailAddressTypeTestCase
     }
 
     /**
-     * @phpstan-return class-string<RfcEmailAddress>
+     * @return class-string<RfcEmailAddress>
      */
     protected function getEmailAddressClassName(): string
     {
