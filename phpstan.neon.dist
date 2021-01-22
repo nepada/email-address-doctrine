@@ -24,10 +24,6 @@ parameters:
             count: 1
             path: src/EmailAddressDoctrine/AbstractEmailAddressType.php
         -
-            message: "#^Throwable is never thrown in the corresponding try block$#"
-            count: 2
-            path: src/EmailAddressDoctrine/AbstractEmailAddressType.php
-        -
             message: "#^Parameter \\#1 \\$value \\(Nepada\\\\EmailAddress\\\\EmailAddress\\|string\\|null\\) of method Nepada\\\\EmailAddressDoctrine\\\\AbstractEmailAddressType\\:\\:convertToDatabaseValue\\(\\) should be contravariant with parameter \\$value \\(mixed\\) of method Doctrine\\\\DBAL\\\\Types\\\\Type\\:\\:convertToDatabaseValue\\(\\)$#"
             count: 1
             path: src/EmailAddressDoctrine/AbstractEmailAddressType.php
