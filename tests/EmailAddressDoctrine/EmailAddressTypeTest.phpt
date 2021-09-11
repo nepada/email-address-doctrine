@@ -65,7 +65,7 @@ class EmailAddressTypeTest extends TestCase
                 $this->type->convertToDatabaseValue('foo', $this->platform);
             },
             ConversionException::class,
-            'Could not convert PHP value \'foo\' of type \'string\' to type \'email_address\'. Expected one of the following types: null, Nepada\EmailAddress\EmailAddress, email address string',
+            'Could not convert PHP value \'foo\'%a?% to type %S?%email_address%S?%. Expected one of the following types: null, Nepada\EmailAddress\EmailAddress, email address string',
         );
     }
 
