@@ -71,7 +71,7 @@ class EmailAddressTypeTest extends TestCase
 
     /**
      * @dataProvider getDataForConvertToDatabaseValue
-     * @param mixed $value
+     * @param EmailAddress|string|null $value
      * @param string|null $expected
      */
     public function testConvertToDatabaseValueSucceeds($value, ?string $expected): void
@@ -113,7 +113,7 @@ class EmailAddressTypeTest extends TestCase
 
     /**
      * @dataProvider getDataForConvertToPHPValue
-     * @param mixed $value
+     * @param EmailAddress|string|null $value
      * @param EmailAddress|null $expected
      */
     public function testConvertToPHPValueSucceeds($value, ?EmailAddress $expected): void
