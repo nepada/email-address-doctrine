@@ -39,7 +39,7 @@ abstract class AbstractEmailAddressType extends StringType
         try {
             return $this->convertToEmailAddress($value);
         } catch (\Throwable $exception) {
-            throw ConversionException::conversionFailed((string) $value, $this->getName());
+            throw ConversionException::conversionFailed((string) $value, $this->getName(), $exception);
         }
     }
 
@@ -57,7 +57,7 @@ abstract class AbstractEmailAddressType extends StringType
         try {
             return $this->convertToEmailAddress($value)->getValue();
         } catch (\Throwable $exception) {
-            throw ConversionException::conversionFailedInvalidType($value, $this->getName(), ['null', EmailAddress::class, 'email address string']);
+            throw ConversionException::conversionFailedInvalidType($value, $this->getName(), ['null', EmailAddress::class, 'email address string'], $exception);
         }
     }
 
