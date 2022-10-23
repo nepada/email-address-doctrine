@@ -58,7 +58,6 @@ abstract class EmailAddressTypeTestCase extends TestCase
             Type::addType($this->getEmailAddressClassName(), $this->getEmailAddressTypeClassName());
         }
 
-        /** @var AbstractEmailAddressType<TEmailAddress> $type */
         $type = Type::getType($this->getEmailAddressClassName());
         Assert::type($this->getEmailAddressTypeClassName(), $type);
         $this->type = $type;

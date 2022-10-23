@@ -40,7 +40,6 @@ class EmailAddressTypeTest extends TestCase
             Type::addType(EmailAddressType::NAME, EmailAddressType::class);
         }
 
-        /** @var EmailAddressType $type */
         $type = Type::getType(EmailAddressType::NAME);
         Assert::type(EmailAddressType::class, $type);
         $this->type = $type;

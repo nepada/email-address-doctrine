@@ -25,4 +25,8 @@ parameters:
         - tests/temp/*
 
     ignoreErrors:
-        - '~Call to static method Tester\\Assert::(type|count|same|notSame)\(\) with .* and .* will always evaluate to true\.~'
+#        - '~Call to static method Tester\\Assert::(type|count|same|notSame)\(\) with .* and .* will always evaluate to true\.~'
+        - # false positive
+            message: "#^Property NepadaTests\\\\EmailAddressDoctrine\\\\EmailAddressTypeTestCase\\<TEmailAddress of Nepada\\\\EmailAddress\\\\EmailAddress\\>\\:\\:\\$type \\(Nepada\\\\EmailAddressDoctrine\\\\AbstractEmailAddressType\\<TEmailAddress of Nepada\\\\EmailAddress\\\\EmailAddress\\>\\) does not accept Doctrine\\\\DBAL\\\\Types\\\\Type\\.$#"
+            count: 1
+            path: tests/EmailAddressDoctrine/EmailAddressTypeTestCase.php
