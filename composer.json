@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "php": ">=7.4.0 <8.3",
+        "php": ">=8.1.0 <8.3",
         "doctrine/dbal": "^3.0@dev",
         "nepada/email-address": "^2.3@dev || ^3.0@dev"
     },
