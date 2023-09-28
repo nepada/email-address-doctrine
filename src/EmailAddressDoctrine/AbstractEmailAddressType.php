@@ -27,10 +27,9 @@ abstract class AbstractEmailAddressType extends StringType
 
     /**
      * @param EmailAddress|string|null $value
-     * @param AbstractPlatform $platform
      * @return TEmailAddress|null
      */
-    public function convertToPHPValue($value, AbstractPlatform $platform): ?EmailAddress
+    public function convertToPHPValue(mixed $value, AbstractPlatform $platform): ?EmailAddress
     {
         if ($value === null) {
             return $value;
@@ -45,10 +44,8 @@ abstract class AbstractEmailAddressType extends StringType
 
     /**
      * @param EmailAddress|string|null $value
-     * @param AbstractPlatform $platform
-     * @return string|null
      */
-    public function convertToDatabaseValue($value, AbstractPlatform $platform): ?string
+    public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): ?string
     {
         if ($value === null) {
             return $value;
@@ -62,11 +59,10 @@ abstract class AbstractEmailAddressType extends StringType
     }
 
     /**
-     * @param EmailAddress|string $value
      * @return TEmailAddress
      * @throws InvalidEmailAddressException
      */
-    protected function convertToEmailAddress($value): EmailAddress
+    protected function convertToEmailAddress(EmailAddress|string $value): EmailAddress
     {
         $emailAddressClassName = $this->getEmailAddressClassName();
         if ($value instanceof $emailAddressClassName) {

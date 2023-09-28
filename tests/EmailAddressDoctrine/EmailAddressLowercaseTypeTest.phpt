@@ -71,10 +71,8 @@ class EmailAddressLowercaseTypeTest extends TestCase
 
     /**
      * @dataProvider getDataForConvertToDatabaseValue
-     * @param EmailAddress|string|null $value
-     * @param string|null $expected
      */
-    public function testConvertToDatabaseValueSucceeds($value, ?string $expected): void
+    public function testConvertToDatabaseValueSucceeds(EmailAddress|string|null $value, ?string $expected): void
     {
         Assert::same($expected, $this->type->convertToDatabaseValue($value, $this->platform));
     }
@@ -113,10 +111,8 @@ class EmailAddressLowercaseTypeTest extends TestCase
 
     /**
      * @dataProvider getDataForConvertToPHPValue
-     * @param EmailAddress|string|null $value
-     * @param EmailAddress|null $expected
      */
-    public function testConvertToPHPValueSucceeds($value, ?EmailAddress $expected): void
+    public function testConvertToPHPValueSucceeds(EmailAddress|string|null $value, ?EmailAddress $expected): void
     {
         $actual = $this->type->convertToPHPValue($value, $this->platform);
         if ($expected === null) {
