@@ -11,6 +11,9 @@ class EmailAddressType extends RfcEmailAddressType
 
     public const NAME = 'email_address';
 
+    /**
+     * @deprecated Kept for DBAL 3.x compatibility
+     */
     public function getName(): string
     {
         return static::NAME;

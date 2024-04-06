@@ -83,7 +83,7 @@ abstract class EmailAddressTypeTestCase extends TestCase
             },
             ConversionException::class,
             sprintf(
-                'Could not convert PHP value \'foo\'%%a?%% to type %%S?%%%s%%S?%%. Expected one of the following types: null, Nepada\EmailAddress\EmailAddress, email address string',
+                'Could not convert PHP value \'foo\'%%a?%% to type %%S?%%%s%%S?%%. Expected one of the following types: null, Nepada\EmailAddress\EmailAddress, email address string%%S?%%',
                 $this->getEmailAddressClassName(),
             ),
         );
@@ -104,7 +104,7 @@ abstract class EmailAddressTypeTestCase extends TestCase
                 $this->type->convertToPHPValue('foo', $this->platform);
             },
             ConversionException::class,
-            sprintf('Could not convert database value "foo" to Doctrine Type %s', $this->getEmailAddressClassName()),
+            sprintf('Could not convert database value "foo" to Doctrine Type %%S?%%%s%%S?%%', $this->getEmailAddressClassName()),
         );
     }
 

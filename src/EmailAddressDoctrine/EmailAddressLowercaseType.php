@@ -11,6 +11,9 @@ class EmailAddressLowercaseType extends CaseInsensitiveEmailAddressType
 
     public const NAME = 'email_address_lowercase';
 
+    /**
+     * @deprecated Kept for DBAL 3.x compatibility
+     */
     public function getName(): string
     {
         return static::NAME;

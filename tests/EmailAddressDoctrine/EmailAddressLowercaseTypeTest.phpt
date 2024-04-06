@@ -65,7 +65,7 @@ class EmailAddressLowercaseTypeTest extends TestCase
                 $this->type->convertToDatabaseValue('foo', $this->platform);
             },
             ConversionException::class,
-            'Could not convert PHP value \'foo\'%a?% to type %S?%email_address_lowercase%S?%. Expected one of the following types: null, Nepada\EmailAddress\EmailAddress, email address string',
+            'Could not convert PHP value \'foo\'%a?% to type %S?%email_address_lowercase%S?%. Expected one of the following types: null, Nepada\EmailAddress\EmailAddress, email address string%S?%',
         );
     }
 
@@ -105,7 +105,7 @@ class EmailAddressLowercaseTypeTest extends TestCase
                 $this->type->convertToPHPValue('foo', $this->platform);
             },
             ConversionException::class,
-            'Could not convert database value "foo" to Doctrine Type email_address_lowercase',
+            'Could not convert database value "foo" to Doctrine Type %S?%email_address_lowercase%S?%',
         );
     }
 

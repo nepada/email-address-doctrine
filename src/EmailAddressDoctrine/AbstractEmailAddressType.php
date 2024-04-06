@@ -5,9 +5,12 @@ namespace Nepada\EmailAddressDoctrine;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
+use Doctrine\DBAL\Types\Exception\InvalidType;
+use Doctrine\DBAL\Types\Exception\ValueNotConvertible;
 use Doctrine\DBAL\Types\StringType;
 use Nepada\EmailAddress\EmailAddress;
 use Nepada\EmailAddress\InvalidEmailAddressException;
+use function class_exists;
 
 /**
  * @template TEmailAddress of EmailAddress
@@ -20,6 +23,9 @@ abstract class AbstractEmailAddressType extends StringType
      */
     abstract protected function getEmailAddressClassName(): string;
 
+    /**
+     * @deprecated Kept for DBAL 3.x compatibility
+     */
     public function getName(): string
     {
         return $this->getEmailAddressClassName();
@@ -38,7 +44,9 @@ abstract class AbstractEmailAddressType extends StringType
         try {
             return $this->convertToEmailAddress($value);
         } catch (\Throwable $exception) {
-            throw ConversionException::conversionFailed((string) $value, $this->getName(), $exception);
+            throw class_exists(ValueNotConvertible::class)
+                ? ValueNotConvertible::new($value, $this->getName(), null, $exception)
+                : throw ConversionException::conversionFailed((string) $value, $this->getName(), $exception);
         }
     }
 
@@ -54,7 +62,10 @@ abstract class AbstractEmailAddressType extends StringType
         try {
             return $this->convertToEmailAddress($value)->getValue();
         } catch (\Throwable $exception) {
-            throw ConversionException::conversionFailedInvalidType($value, $this->getName(), ['null', EmailAddress::class, 'email address string'], $exception);
+            throw class_exists(InvalidType::class)
+                ? InvalidType::new($value, $this->getName(), ['null', EmailAddress::class, 'email address string'], $exception)
+                : ConversionException::conversionFailedInvalidType($value, $this->getName(), ['null', EmailAddress::class, 'email address string'], $exception);
+
         }
     }
 
@@ -79,6 +90,9 @@ abstract class AbstractEmailAddressType extends StringType
         return $emailAddress;
     }
 
+    /**
+     * @deprecated Kept for DBAL 3.x compatibility
+     */
     public function requiresSQLCommentHint(AbstractPlatform $platform): bool
     {
         return true;
