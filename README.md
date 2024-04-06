@@ -49,16 +49,15 @@ This package provides two Doctrine types:
 
 Example usage in the entity:
 ```php
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\Entity;
 use Nepada\EmailAddress\CaseInsensitiveEmailAddress;
 
-/**
- * @ORM\Entity
- */
+#[Entity]
 class Contact
 {
 
-    /** @ORM\Column(type=CaseInsensitiveEmailAddress::class, nullable=false) */
+    #[Column(type: CaseInsensitiveEmailAddress::class, nullable: false)]
     private CaseInsensitiveEmailAddress $email;
 
     public function getEmailAddress(): CaseInsensitiveEmailAddress
