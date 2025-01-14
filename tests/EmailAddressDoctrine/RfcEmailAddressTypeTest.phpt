@@ -34,7 +34,7 @@ class RfcEmailAddressTypeTest extends EmailAddressTypeTestCase
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed[]>
      */
     protected function getDataForConvertToDatabaseValue(): array
     {
@@ -59,7 +59,7 @@ class RfcEmailAddressTypeTest extends EmailAddressTypeTestCase
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed[]>
      */
     protected function getDataForConvertToPHPValue(): array
     {

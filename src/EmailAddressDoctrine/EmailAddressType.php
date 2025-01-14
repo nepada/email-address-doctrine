@@ -9,6 +9,7 @@ namespace Nepada\EmailAddressDoctrine;
 class EmailAddressType extends RfcEmailAddressType
 {
 
+    /** @final */
     public const NAME = 'email_address';
 
     /**

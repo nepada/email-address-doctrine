@@ -39,12 +39,12 @@ abstract class EmailAddressTypeTestCase extends TestCase
     abstract protected function getEmailAddressClassName(): string;
 
     /**
-     * @return mixed[]
+     * @return list<mixed[]>
      */
     abstract protected function getDataForConvertToDatabaseValue(): array;
 
     /**
-     * @return mixed[]
+     * @return list<mixed[]>
      */
     abstract protected function getDataForConvertToPHPValue(): array;
 

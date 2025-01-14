@@ -78,7 +78,7 @@ class EmailAddressLowercaseTypeTest extends TestCase
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed[]>
      */
     protected function getDataForConvertToDatabaseValue(): array
     {
@@ -124,7 +124,7 @@ class EmailAddressLowercaseTypeTest extends TestCase
     }
 
     /**
-     * @return mixed[]
+     * @return list<mixed[]>
      */
     protected function getDataForConvertToPHPValue(): array
     {

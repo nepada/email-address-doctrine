@@ -9,6 +9,7 @@ namespace Nepada\EmailAddressDoctrine;
 class EmailAddressLowercaseType extends CaseInsensitiveEmailAddressType
 {
 
+    /** @final */
     public const NAME = 'email_address_lowercase';
 
     /**
