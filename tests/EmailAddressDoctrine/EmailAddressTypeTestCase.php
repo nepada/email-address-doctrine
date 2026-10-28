@@ -92,7 +92,10 @@ abstract class EmailAddressTypeTestCase extends TestCase
     /**
      * @dataProvider getDataForConvertToDatabaseValue
      */
-    public function testConvertToDatabaseValueSucceeds(EmailAddress|string|null $value, ?string $expected): void
+    public function testConvertToDatabaseValueSucceeds(
+        EmailAddress|string|null $value,
+        ?string $expected,
+    ): void
     {
         Assert::same($expected, $this->type->convertToDatabaseValue($value, $this->platform));
     }
@@ -111,7 +114,10 @@ abstract class EmailAddressTypeTestCase extends TestCase
     /**
      * @dataProvider getDataForConvertToPHPValue
      */
-    public function testConvertToPHPValueSucceeds(EmailAddress|string|null $value, ?EmailAddress $expected): void
+    public function testConvertToPHPValueSucceeds(
+        EmailAddress|string|null $value,
+        ?EmailAddress $expected,
+    ): void
     {
         $actual = $this->type->convertToPHPValue($value, $this->platform);
         if ($expected === null) {

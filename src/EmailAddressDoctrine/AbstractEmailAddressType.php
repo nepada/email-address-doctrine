@@ -35,7 +35,10 @@ abstract class AbstractEmailAddressType extends StringType
      * @param EmailAddress|string|null $value
      * @return TEmailAddress|null
      */
-    public function convertToPHPValue(mixed $value, AbstractPlatform $platform): ?EmailAddress
+    public function convertToPHPValue(
+        mixed $value,
+        AbstractPlatform $platform,
+    ): ?EmailAddress
     {
         if ($value === null) {
             return $value;
@@ -53,7 +56,10 @@ abstract class AbstractEmailAddressType extends StringType
     /**
      * @param EmailAddress|string|null $value
      */
-    public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): ?string
+    public function convertToDatabaseValue(
+        mixed $value,
+        AbstractPlatform $platform,
+    ): ?string
     {
         if ($value === null) {
             return $value;
